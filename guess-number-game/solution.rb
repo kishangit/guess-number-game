@@ -15,4 +15,11 @@ class GuessNumber
     user_guess = gets.chomp
   end
 
+  ##
+  # This method will check how many numbers are present irrespective of position
+  ##
+  def check_how_many_number_are_present(user_guess)
+    user_guess.scan(/[#{@secret}]/)
+  end
+
 end
