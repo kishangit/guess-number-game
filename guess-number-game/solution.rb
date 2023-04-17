@@ -26,6 +26,22 @@ class GuessNumber
 
       # Increment the number of guesses
       @num_guesses += 1
+
+      # Check if the user guessed correctly
+      if user_guess == @secret
+        puts "4 0"
+        puts "Congratulations, you guessed the secret number in #{@num_guesses} guesses!"
+        break
+      end
+
+      # Check if the user has reached the maximum number of guesses
+      if @num_guesses == 100
+        puts "Sorry, you have run out of guesses. The secret number was #{@secret}."
+        break
+      end
+
+      # Print the number of matches and correct positions
+      puts "#{correct_positions} #{matches}"
     end
   end
 
