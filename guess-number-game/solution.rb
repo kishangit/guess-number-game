@@ -22,4 +22,18 @@ class GuessNumber
     user_guess.scan(/[#{@secret}]/)
   end
 
+  ##
+  # This method will check how many numbers are present with the right position
+  ##
+  def check_right_number_with_position(user_guess)
+    # Determine how many of the matches are in the correct position
+    correct_positions = 0
+    (0..3).each do |i|
+      if @secret[i] == user_guess[i]
+        correct_positions += 1
+      end
+    end
+    correct_positions
+  end
+
 end
