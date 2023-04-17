@@ -7,4 +7,12 @@ class GuessNumber
     @num_guesses = 0
   end
 
+  ##
+  # This method will take input from the user
+  ##
+  def take_user_input
+    # Read in the user's guess
+    user_guess = gets.chomp
+  end
+
 end
