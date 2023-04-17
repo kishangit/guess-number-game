@@ -8,6 +8,28 @@ class GuessNumber
   end
 
   ##
+  # Start playing the game => This method will take input from user and do all the checkings of number
+  ##
+  def play
+    loop do
+      # Prompt the user to guess the number
+      puts "Guess the 4-digit number (#{100 - @num_guesses} guesses remaining):"
+
+      # Take input from user
+      user_guess = take_user_input
+
+      ## Check total numbers present irrespective of position
+      matches = check_how_many_number_are_present(user_guess)
+
+      ## Check right number with right position
+      correct_positions = check_right_number_with_position(user_guess)
+
+      # Increment the number of guesses
+      @num_guesses += 1
+    end
+  end
+
+  ##
   # This method will take input from the user
   ##
   def take_user_input
