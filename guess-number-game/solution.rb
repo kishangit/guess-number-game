@@ -40,6 +40,12 @@ class GuessNumber
         break
       end
 
+      ##
+      # Subtract correct positioned number from total matches
+      # Because we are showing correct positioned number and total matched number in different count
+      ##
+      matches = matches.length - correct_positions
+
       # Print the number of matches and correct positions
       puts "#{correct_positions} #{matches}"
     end
