@@ -3,7 +3,6 @@ require_relative "./solution.rb"
 require 'rspec'
 
 RSpec.describe GuessNumber do
-  let(:guess_number) { described_class.new('1234') }
 
   describe '#change_name' do
 
@@ -58,6 +57,16 @@ RSpec.describe GuessNumber do
     )
     expect { guess_number.play }.to output(
       "Guess the 4-digit number (5 guesses remaining):\n0 0\nGuess the 4-digit number (4 guesses remaining):\n0 0\nGuess the 4-digit number (3 guesses remaining):\n0 0\nGuess the 4-digit number (2 guesses remaining):\n0 0\nGuess the 4-digit number (1 guesses remaining):\nSorry, you have run out of guesses. The secret number was 1234.\n"
+    ).to_stdout
+  end
+
+  it 'will test that all wrong guess will ensure that game is lost' do
+    guess_number = GuessNumber.new('1234', 2)
+    allow(guess_number).to receive(:gets).and_return(
+      'abc', '12312434235', '5555', '5555'
+    )
+    expect { guess_number.play }.to output(
+      "Guess the 4-digit number (2 guesses remaining):\nPlease enter valid 4 digit number\nPlease enter valid 4 digit number\n0 0\nGuess the 4-digit number (1 guesses remaining):\nSorry, you have run out of guesses. The secret number was 1234.\n"
     ).to_stdout
   end
 end
