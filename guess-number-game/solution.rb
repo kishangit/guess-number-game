@@ -60,12 +60,19 @@ class GuessNumber
     user_guess = gets.chomp
 
     # Validate user input that it is not blank length is 4 and only digits are there
-    until !user_guess.nil? && user_guess.length == 4 && user_guess.to_i.to_s == user_guess
+    until validate_input(user_guess)
       puts 'Please enter valid 4 digit number'
       user_guess = gets.chomp
     end
 
     user_guess
+  end
+
+  ##
+  # Validate user input
+  ##
+  def validate_input(user_guess)
+    !user_guess.nil? && user_guess.length == 4 && (user_guess.to_i.to_s == user_guess || user_guess == '0000')
   end
 
   ##
