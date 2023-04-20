@@ -53,11 +53,19 @@ class GuessNumber
   end
 
   ##
-  # This method will take input from the user
+  # This method will take input from the user and validate it
   ##
   def take_user_input
     # Read in the user's guess
     user_guess = gets.chomp
+
+    # Validate user input that it is not blank length is 4 and only digits are there
+    until !user_guess.nil? && user_guess.length == 4 && user_guess.to_i.to_s == user_guess
+      p 'Please enter valid 4 digit number'
+      user_guess = gets.chomp
+    end
+
+    user_guess
   end
 
   ##
