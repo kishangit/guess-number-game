@@ -2,9 +2,10 @@ require 'pry'
 class GuessNumber
 
   ## Initialize with random number
-  def initialize(secret = rand(1000..9999).to_s)
+  def initialize(secret = rand(1000..9999).to_s, allowed_max_guesses = 100)
     @secret = secret
     @num_guesses = 0
+    @allowed_max_guesses = allowed_max_guesses
   end
 
   ##
@@ -13,7 +14,7 @@ class GuessNumber
   def play
     loop do
       # Prompt the user to guess the number
-      puts "Guess the 4-digit number (#{100 - @num_guesses} guesses remaining):"
+      puts "Guess the 4-digit number (#{@allowed_max_guesses - @num_guesses} guesses remaining):"
 
       # Take input from user
       user_guess = take_user_input
@@ -35,7 +36,7 @@ class GuessNumber
       end
 
       # Check if the user has reached the maximum number of guesses
-      if @num_guesses == 100
+      if @num_guesses == @allowed_max_guesses
         puts "Sorry, you have run out of guesses. The secret number was #{@secret}."
         break
       end
